@@ -1,0 +1,29 @@
+{
+  "name": "nyantube",
+  "version": "1.0.0",
+  "description": "The best way to watch cat videos.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lethze/nyantube.git"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js"
+  },
+  "author": "lethze<ltz.sjl@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lethze/nyantube/issues"
+  },
+  "homepage": "https://github.com/lethze/nyantube#readme",
+  "dependencies": {
+    "express": "^4.18.3",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/node": "^7.23.9",
+    "@babel/preset-env": "^7.24.0",
+    "nodemon": "^3.1.0"
+  }
+}
