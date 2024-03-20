@@ -1,3 +1,10 @@
 extend base
+include mixins/video
+
 block content
-    h1 Home!
+    h2 Welcome here you will see the trending videos
+
+    each potato in videos
+        +video(potato)
+    else
+        div Sorry nothing found.
