@@ -17,6 +17,8 @@
   "homepage": "https://github.com/lethze/nyantube#readme",
   "dependencies": {
     "express": "^4.18.3",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.3",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
   },
