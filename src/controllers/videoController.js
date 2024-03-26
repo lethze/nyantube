@@ -2,7 +2,6 @@ import Video from "../models/Video";
 
 export const home = async (req, res) => {
   const videos = await Video.find({}); // video를 전부 찾아서 array로 보내줌
-  console.log(videos);
   return res.render("home", { pageTitle: "Home", videos });
 };
 export const watch = async (req, res) => {
@@ -29,11 +28,9 @@ export const postEdit = async (req, res) => {
     return res.render("404", { pageTitle: "Video not found." });
   }
   await Video.findByIdAndUpdate(id, {
-    title,
-    description,
-    hashtags: hashtags
-      .split(",")
-      .map((word) => (word.startsWith("#") ? word.trim() : `#${word.trim()}`)),
+    title: title,
+    description: description,
+    hashtags: Video.formatHashtags(hashtags),
   });
 
   return res.redirect(`/videos/${id}`);
@@ -48,7 +45,7 @@ export const postUpload = async (req, res) => {
     await Video.create({
       title,
       description,
-      hashtags: hashtags.split(",").map((word) => `#${word.trim()}`),
+      hashtags: Video.formatHashtags(hashtags),
     });
     return res.redirect("/");
   } catch (error) {
@@ -57,4 +54,10 @@ export const postUpload = async (req, res) => {
       errorMessage: error._message,
     });
   }
+};
+
+export const deleteVideo = async (req, res) => {
+  const { id } = req.params;
+  await Video.findByIdAndDelete(id);
+  return res.redirect("/");
 };
